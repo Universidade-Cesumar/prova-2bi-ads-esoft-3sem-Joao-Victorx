@@ -5,7 +5,7 @@ async function listaMateriais() {
     try {
         const resposta = await fetch(API);
         const produtos = await resposta.json();
-        const corpoTabela = document.getElementById("corpo-tabela");
+        const corpoTabela = document.getElementById("lista-materiais");
         corpoTabela.innerHTML = "";
         produtos.forEach((produto, index) => {
             corpoTabela.innerHTML += `
