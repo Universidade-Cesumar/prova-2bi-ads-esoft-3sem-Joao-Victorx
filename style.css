@@ -4,6 +4,8 @@
     padding: 0;
 }
 
+/*========================= HEADER =========================*/
+
 nav {
     position: sticky;
     top: 0;
@@ -51,11 +53,11 @@ nav {
     transform: rotate(-30deg);
 }
 
-.logo-text {
+.name-system {
     line-height: 1.2;
 }
 
-.logo-text .brand-main {
+.name-system .brand-main {
     font-size: 20px;
     font-weight: 800;
     color: #ffffff;
@@ -107,3 +109,4 @@ nav {
     width: 14px;
     height: 14px;
 }
+

@@ -11,31 +11,66 @@
 </head>
 
 <body>
-    <nav>
-        <a class="logo" href="#topo">
-            <img src="" alt="">
-            <div class="logo-text">
+    <header>
+        <nav>
+            <div class="name-system">
                 <div class="brand-main">Sistema Almoxarifado</div>
             </div>
-        </a>
+            <ul class="nav-links">
+                <li><a href="#">Lista de Produtos</a></li>
+                <li><a href="#">Nulo</a></li>
+                <li><a href="#">Nulo</a></li>
+                <li><a href="#">Nulo</a></li>
+                <li><a href="#">Nulo</a></li>
+            </ul>
+            <button class="btn-login" id="btn-open-login">
+                Login
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+            </button>
+        </nav>
+    </header>
 
-        <ul class="nav-links">
-            <li><a href="#">Lista de Produtos</a></li>
-            <li><a href="#">Nulo</a></li>
-            <li><a href="#">Nulo</a></li>
-            <li><a href="#">Nulo</a></li>
-            <li><a href="#">Nulo</a></li>
-        </ul>
+    <main>
+        <div class="container my-5">
+            <h1 class="mb-4 text-secondary border-bottom pb-2">Controle de Estoque</h1>
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white font-weight-bold text-muted">Cadastrar Novo Material</div>
+                <div class="card-body">
+                    <form id="formProduto" class="row g-3 align-items-center">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="input-nome" placeholder="Nome do Material" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" class="form-control" id="input-quantidade" placeholder="Quantidade"
+                                required min="0">
+                        </div>
+                        <div class="col-md-2 d-grid">
+                            <button id="btn-cadastrar" type="submit" class="btn btn-success">Inserir Linha</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card shadow-sm">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover mb-0 align-middle">
+                        <thead class="table-secondary text-uppercase text-muted" style="font-size: 0.85rem;">
+                            <tr>
+                                <th scope="col" class="text-center" style="width: 80px;">ID</th>
+                                <th scope="col">Nome do Material</th>
+                                <th scope="col" class="text-center" style="width: 150px;">Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpo-tabela">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
 
-        <button class="btn-login" id="btn-open-login">
-            Login
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-            </svg>
-        </button>
-    </nav>
-
-
+    <script src="./main.js"></script>
 </body>
 
 </html>
