@@ -1,1 +1,109 @@
-/* Caso queira utilizar framework como Bootstrap para estilização, pode utilizar. Basta ignoar esse arquivo */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: blue;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 52px;
+    height: 80px;
+    border-bottom: none;
+}
+
+.logo img {
+    height: 55px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2.5px solid var(--accent);
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-icon::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    transform: rotate(-30deg);
+}
+
+.logo-text {
+    line-height: 1.2;
+}
+
+.logo-text .brand-main {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -.01em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color .18s;
+}
+
+.nav-links a:hover {
+    color: #ffffffcc;
+}
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+    border: 2px solid #ffffff;
+    background: transparent;
+    border-radius: 100px;
+    padding: 9px 20px 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: background .18s, transform .15s;
+}
+
+.btn-login:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+}
+
+.btn-login svg {
+    width: 14px;
+    height: 14px;
+}
