@@ -24,4 +24,32 @@ async function listaMateriais() {
         console.error("Erro ao buscar dados do almoxarifado:", erro);
     }
 }
+
+/*================================ CADASTRAR PRODUTOS ===================================*/
+
+document.getElementById("formProduto").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById("input-nome").value;
+    const quantidade = document.getElementById("input-quantidade").value;
+    const novoProduto = {
+        nome: nome,
+        quantidade: parseInt(quantidade)
+    };
+    try {
+        const resposta = await fetch(API, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(novoProduto)
+        });
+        if (resposta.ok) {
+            document.getElementById("formProduto").reset();
+            listaMateriais();
+        }
+    } catch (erro) {
+        console.error("Erro ao cadastrar material:", erro);
+    }
+});
 listaMateriais();
