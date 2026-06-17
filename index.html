@@ -39,7 +39,8 @@
                 <div class="card-body">
                     <form id="formProduto" class="row g-3 align-items-center">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="input-nome" placeholder="Nome do Material" required>
+                            <input type="text" class="form-control" id="input-nome" placeholder="Nome do Material"
+                                required>
                         </div>
                         <div class="col-md-4">
                             <input type="number" class="form-control" id="input-quantidade" placeholder="Quantidade"
@@ -47,6 +48,17 @@
                         </div>
                         <div class="col-md-2 d-grid">
                             <button id="btn-cadastrar" type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-white fw-bold text-muted">Retirada de Materiais</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="number" class="form-control" id="input-retirada"
+                                            placeholder="Quantidade para retirada" min="1">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
