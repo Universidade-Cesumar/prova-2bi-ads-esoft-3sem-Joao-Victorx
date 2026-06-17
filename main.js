@@ -70,4 +70,36 @@ document.getElementById("formProduto").addEventListener("submit", async (e) => {
         console.error("Erro ao cadastrar material:", erro);
     }
 });
+
+/*======================= BAIXAR ESTOQUE =======================*/
+
+
+async function baixarMaterial(id, estoqueAtual) {
+    const retirada = parseInt(document.getElementById("input-retirada").value);
+
+    if (!validarRetirada(estoqueAtual, retirada)) {
+        alert("Quantidade de retirada inválida.");
+        return;
+    }
+    const novaQuantidade = estoqueAtual - retirada;
+    try {
+        const resposta = await fetch(`${API}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quantidade: novaQuantidade
+            })
+        });
+
+        if (resposta.ok) {
+            document.getElementById("input-retirada").value = "";
+            listaMateriais();
+        }
+    } catch (erro) {
+        console.error("Erro ao baixar estoque:", erro);
+    }
+}
+
 listaMateriais();
