@@ -1,5 +1,16 @@
 const API = "https://6a29b579f59cb8f65f1d8502.mockapi.io/api/v1/produtos";
 
+/*======================= REGRA DE NEGÓCIO =======================*/
+function validarRetirada(estoqueAtual, quantidadeRetirada) {
+    if (quantidadeRetirada <= 0) {
+        return false;
+    }
+    if (quantidadeRetirada > estoqueAtual) {
+        return false;
+    }
+    return true;
+}
+
 /*================================ LISTAR PRODUTOS ===================================*/
 async function listaMateriais() {
     try {
