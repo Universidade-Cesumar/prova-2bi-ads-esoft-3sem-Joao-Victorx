@@ -17,6 +17,13 @@ async function listaMateriais() {
                             ${produto.quantidade}
                         </span>
                     </td>
+                    <td class="text-center">
+                        <button
+                            class="btn btn-warning btn-sm btn-baixar" onclick="baixarMaterial('${produto.id}', ${produto.quantidade})">Baixar</button>
+                        <button
+                            class="btn btn-danger btn-sm btn-excluir" onclick="excluirMaterial('${produto.id}')">
+                            Excluir</button>
+                    </td>
                 </tr>
             `;
         });
