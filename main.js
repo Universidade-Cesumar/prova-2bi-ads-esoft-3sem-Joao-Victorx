@@ -102,4 +102,23 @@ async function baixarMaterial(id, estoqueAtual) {
     }
 }
 
+/*======================= EXCLUIR =======================*/
+async function excluirMaterial(id) {
+    const confirmar = confirm(
+        "Deseja realmente excluir este material?"
+    );
+    if (!confirmar) {
+        return;
+    }
+    try {
+        const resposta = await fetch(`${API}/${id}`, {
+            method: "DELETE"
+        });
+        if (resposta.ok) {
+            listaMateriais();
+        }
+    } catch (erro) {
+        console.error("Erro ao excluir:", erro);
+    }
+}
 listaMateriais();
