@@ -110,3 +110,11 @@ nav {
     height: 14px;
 }
 
+.estoque-critico {
+    background-color: #ffcccc !important;
+}
+
+.estoque-critico td {
+    font-weight: bold;
+    color: #b30000;
+}
