@@ -12,6 +12,54 @@ function validarRetirada(estoqueAtual, quantidadeRetirada) {
     return true;
 }
 
+function renderizarTabela(produtos) {
+
+    const corpoTabela =
+        document.getElementById("lista-materiais");
+
+    corpoTabela.innerHTML = "";
+
+    produtos.forEach((produto, index) => {
+
+        const classeLinha =
+            produto.quantidade < 10
+                ? "estoque-critico"
+                : "";
+
+        corpoTabela.innerHTML += `
+            <tr class="${classeLinha}">
+                <td class="text-center text-muted fw-bold">
+                    ${index + 1}
+                </td>
+
+                <td class="fw-semibold text-dark">
+                    ${produto.nome}
+                </td>
+
+                <td class="text-center">
+                    <span class="badge ${produto.quantidade > 0 ? 'bg-primary' : 'bg-danger'} rounded-pill px-3">
+                        ${produto.quantidade}
+                    </span>
+                </td>
+
+                <td class="text-center">
+                    <button
+                        class="btn btn-warning btn-sm btn-baixar"
+                        onclick="baixarMaterial('${produto.id}', ${produto.quantidade})">
+                        Baixar
+                    </button>
+
+                    <button
+                        class="btn btn-danger btn-sm btn-excluir"
+                        onclick="excluirMaterial('${produto.id}')">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
 /*================================ LISTAR PRODUTOS ===================================*/
 async function listaMateriais() {
     try {
@@ -24,47 +72,7 @@ async function listaMateriais() {
         document.getElementById("total-itens").textContent =
             produtos.length;
 
-        const corpoTabela =
-            document.getElementById("lista-materiais");
-
-        corpoTabela.innerHTML = "";
-
-        produtos.forEach((produto, index) => {
-
-            const classeLinha = produto.quantidade < 10
-            ? "estoque-critico"
-            : "";
-
-            corpoTabela.innerHTML += `
-                <tr class="${classeLinha}">
-                    <td class="text-center text-muted fw-bold">${index + 1}</td>
-
-                    <td class="fw-semibold text-dark">
-                        ${produto.nome}
-                    </td>
-
-                    <td class="text-center">
-                        <span class="badge ${produto.quantidade > 0 ? 'bg-primary' : 'bg-danger'} rounded-pill px-3">
-                            ${produto.quantidade}
-                        </span>
-                    </td>
-
-                    <td class="text-center">
-                        <button
-                            class="btn btn-warning btn-sm btn-baixar"
-                            onclick="baixarMaterial('${produto.id}', ${produto.quantidade})">
-                            Baixar
-                        </button>
-
-                        <button
-                            class="btn btn-danger btn-sm btn-excluir"
-                            onclick="excluirMaterial('${produto.id}')">
-                            Excluir
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
+       renderizarTabela(produtos);
 
     } catch (erro) {
 
@@ -75,6 +83,25 @@ async function listaMateriais() {
 
     }
 }
+
+/*======================= PESQUISAR =======================*/
+document.getElementById("input-busca")
+    .addEventListener("input", () => {
+
+        const texto =
+            document.getElementById("input-busca")
+            .value
+            .toLowerCase();
+
+        const filtrados =
+            materiais.filter(produto =>
+                produto.nome
+                    .toLowerCase()
+                    .includes(texto)
+            );
+
+        renderizarTabela(filtrados);
+    });
 
 /*================================ CADASTRAR PRODUTOS ===================================*/
 
