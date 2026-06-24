@@ -6,7 +6,7 @@
 
 Sistema web para controle de estoque de materiais de almoxarifado, desenvolvido com HTML, CSS, JavaScript e MockAPI.
 
-O sistema permite cadastrar materiais, visualizar o estoque disponível, realizar baixas de materiais e excluir registros.
+O sistema permite cadastrar materiais, visualizar o estoque disponível, realizar baixas de materiais, pesquisar produtos e excluir registros.
 
 ## Funcionalidades
 
@@ -15,6 +15,10 @@ O sistema permite cadastrar materiais, visualizar o estoque disponível, realiza
 * Controle de quantidade em estoque
 * Baixa de materiais
 * Exclusão de materiais
+* Pesquisa de materiais em tempo real
+* Dashboard com total de materiais cadastrados
+* Destaque visual para materiais com estoque crítico (menos de 10 unidades)
+* Tratamento de erros nas requisições à API
 * Integração com MockAPI para persistência dos dados
 
 ## Tecnologias Utilizadas
@@ -76,6 +80,18 @@ Permite retirar itens do estoque respeitando as regras:
 
 * A quantidade deve ser maior que zero.
 * A quantidade não pode ser maior que o estoque disponível.
+
+### Pesquisa
+
+Permite localizar materiais cadastrados através da barra de busca, filtrando os resultados em tempo real conforme o usuário digita.
+
+### Dashboard
+
+Exibe a quantidade total de materiais cadastrados no sistema.
+
+### Estoque Crítico
+
+Materiais com quantidade inferior a 10 unidades recebem destaque visual para facilitar a identificação de itens que precisam de reposição.
 
 ### Exclusão
 
