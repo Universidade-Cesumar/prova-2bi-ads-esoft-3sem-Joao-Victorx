@@ -31,8 +31,12 @@ async function listaMateriais() {
 
         produtos.forEach((produto, index) => {
 
+            const classeLinha = produto.quantidade < 10
+            ? "estoque-critico"
+            : "";
+
             corpoTabela.innerHTML += `
-                <tr>
+                <tr class="${classeLinha}">
                     <td class="text-center text-muted fw-bold">${index + 1}</td>
 
                     <td class="fw-semibold text-dark">
