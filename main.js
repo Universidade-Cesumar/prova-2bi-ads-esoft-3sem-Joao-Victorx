@@ -1,4 +1,5 @@
 const API = "https://6a29b579f59cb8f65f1d8502.mockapi.io/api/v1/produtos";
+let materiais = [];
 
 /*======================= REGRA DE NEGÓCIO =======================*/
 function validarRetirada(estoqueAtual, quantidadeRetirada) {
@@ -14,32 +15,60 @@ function validarRetirada(estoqueAtual, quantidadeRetirada) {
 /*================================ LISTAR PRODUTOS ===================================*/
 async function listaMateriais() {
     try {
+
         const resposta = await fetch(API);
         const produtos = await resposta.json();
-        const corpoTabela = document.getElementById("lista-materiais");
+
+        materiais = produtos;
+
+        document.getElementById("total-itens").textContent =
+            produtos.length;
+
+        const corpoTabela =
+            document.getElementById("lista-materiais");
+
         corpoTabela.innerHTML = "";
+
         produtos.forEach((produto, index) => {
+
             corpoTabela.innerHTML += `
                 <tr>
                     <td class="text-center text-muted fw-bold">${index + 1}</td>
-                    <td class="fw-semibold text-dark">${produto.nome}</td>
+
+                    <td class="fw-semibold text-dark">
+                        ${produto.nome}
+                    </td>
+
                     <td class="text-center">
                         <span class="badge ${produto.quantidade > 0 ? 'bg-primary' : 'bg-danger'} rounded-pill px-3">
                             ${produto.quantidade}
                         </span>
                     </td>
+
                     <td class="text-center">
                         <button
-                            class="btn btn-warning btn-sm btn-baixar" onclick="baixarMaterial('${produto.id}', ${produto.quantidade})">Baixar</button>
+                            class="btn btn-warning btn-sm btn-baixar"
+                            onclick="baixarMaterial('${produto.id}', ${produto.quantidade})">
+                            Baixar
+                        </button>
+
                         <button
-                            class="btn btn-danger btn-sm btn-excluir" onclick="excluirMaterial('${produto.id}')">
-                            Excluir</button>
+                            class="btn btn-danger btn-sm btn-excluir"
+                            onclick="excluirMaterial('${produto.id}')">
+                            Excluir
+                        </button>
                     </td>
                 </tr>
             `;
         });
+
     } catch (erro) {
-        console.error("Erro ao buscar dados do almoxarifado:", erro);
+
+        console.error(
+            "Erro ao buscar dados do almoxarifado:",
+            erro
+        );
+
     }
 }
 
